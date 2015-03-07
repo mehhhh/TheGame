@@ -14,7 +14,6 @@ var lvl1 = (function () {
         this.tilemap.addTilesetImage('floor');
 
         // background layer
-        // bug! fixing it...
         this.tilemap.background = this.tilemap.createLayer('background');
 
         // collision layer
