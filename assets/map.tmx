@@ -6,14 +6,17 @@
  <tileset firstgid="2" name="floor" tilewidth="16" tileheight="16">
   <image source="floor.png" width="128" height="48"/>
  </tileset>
+ <tileset firstgid="26" name="wall" tilewidth="16" tileheight="16">
+  <image source="wall.png" width="96" height="96"/>
+ </tileset>
+ <layer name="background" width="50" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztmMlKQ0EQRRtFNBHRKBLjnERjBud5yv//lvcS7splNdVU0wcOp7bvvcWFl1JKx/DEWN3kFJ45VlzCobG6+SwjOHasmMAbY3VfwCmcOVbcwjtjdfP93MMHx4pn+GKsbn6TV/jmWPEJv4zVvYDf8MexYiOjZA2uO1bsZJR04bZjxWFGyT48cGxttD3/v+ekhj0nNew5qWHPSQ17Tkrt+RbsGKublNrzPdgzVjcptedHcGCsbtL23Ebb87bnbc/bnkfZ805GSak972WUlNrzQUZJ23Mb52n1XzZqxRW8DlwxT6v/mVErHuFT4Ip3+BG44hcuA1dsBlfsBlf0g1sTf22I3gs=
+  </data>
+ </layer>
  <layer name="collide" width="50" height="40">
   <data encoding="base64" compression="zlib">
    eJztlUEKACEMxPT/n94HiMMeSlokgV4j8TJ7rbUfuUqqfX/ftOPupLEjO2nsyE6a1zpeueq/obEjO2nsyE4aO7KTxo7spOneX/f8fNOOu5PGjuyksSM7aezITpru/Z285x3YMQs7ZmHHLOyYRff+Vt4H4EsBWw==
-  </data>
- </layer>
- <layer name="background" width="50" height="40">
-  <data encoding="base64" compression="zlib">
-   eJzt1VEKg0AMRVGpSGultCpS3f9GzfvICiZMGL0HLskOXtcBQDuGwORh9RWv+wQmb2uqeN0WmCzWWvECAHK8rLHw+i9Ze/6z5sLrv2Tt+W4dhdd/Yc8B4B7GwCRrz+fAJGvPj8CEPQeAe3g2nvs2nvs33pWcB78dIA==
   </data>
  </layer>
 </map>

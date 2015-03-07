@@ -4,6 +4,8 @@ var lvl1 = (function () {
         game.load.tilemap('map', 'assets/map.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.image('floor', 'assets/floor.png');
         game.load.image('tileset', 'assets/tileset.png');
+        game.load.image('wall', 'assets/wall.png');
+
         game.load.image('cracker', 'assets/cracker.png');
         game.load.image('pear', 'assets/pear.png');
     };
@@ -18,6 +20,7 @@ var lvl1 = (function () {
         this.tilemap = game.add.tilemap('map', 16, 16, 800, 640);
         this.tilemap.addTilesetImage('tileset');
         this.tilemap.addTilesetImage('floor');
+        this.tilemap.addTilesetImage('wall');
 
         // background layer
         this.tilemap.background = this.tilemap.createLayer('background');
