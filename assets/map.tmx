@@ -8,12 +8,12 @@
  </tileset>
  <layer name="collide" width="50" height="40">
   <data encoding="base64" compression="zlib">
-   eJztlTsKwDAMxZJ+7n/lToYsNoWaF9dI8FYFDcFzjDGbLJNs39s36fCdauiInWroiJ1qrONMmjkP4daOLsuE//HtTTp8pxo6YqcaOmKnGuvIvq3cc+45Hb5TDR2xUw0dsVNNt447aebknte55zugoxZ01IKOWnTruH68taPDHiz8A20=
+   eJztlUEKACEMxPT/n94HiMMeSlokgV4j8TJ7rbUfuUqqfX/ftOPupLEjO2nsyE6a1zpeueq/obEjO2nsyE4aO7KTxo7spOneX/f8fNOOu5PGjuyksSM7aezITpru/Z285x3YMQs7ZmHHLOyYRff+Vt4H4EsBWw==
   </data>
  </layer>
  <layer name="background" width="50" height="40">
   <data encoding="base64" compression="zlib">
-   eJztwQEBAAAAgJD+r+4ICgAAAAAAAAAYH0AAAQ==
+   eJzt1ckJACAMAMHg0X/LPiQNiAiRGdgaNgIAzvRLpfYwAGCbl0p+DgDv+TkA1DcK95sFBDoCSQ==
   </data>
  </layer>
 </map>

@@ -1,9 +1,31 @@
-var level = (function () {
-    var create = function () {};
+var lvl1 = (function () {
+    var preload = function () {
+        game.load.tilemap('map', 'assets/map.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.image('floor', 'assets/floor.png');
+        game.load.image('tileset', 'assets/tileset.png');
+    };
 
-    var preload = function () {};
+    var create = function () {
+        game.stage.backgroundColor = '#eee';
+        game.physics.startSystem(Phaser.Physics.ARCADE);
 
-    var update = function () {};
+        this.tilemap = game.add.tilemap('map', 16, 16, 800, 640);
+        this.tilemap.addTilesetImage('tileset');
+        this.tilemap.addTilesetImage('floor');
+
+        // background layer
+        // bug! fixing it...
+        // this.tilemap.background = this.tilemap.createLayer('background');
+
+        // collision layer
+        this.tilemap.floor = this.tilemap.createLayer('collide');
+        game.physics.arcade.enable(this.tilemap.floor);
+        this.tilemap.setCollisionByExclusion([], true, this.tilemap.floor);
+    };
+
+    var update = function () {
+        // game.physics.arcade.collide(yoursprite, this.tilemap.floor);
+    };
 
     return {
         create : create,
