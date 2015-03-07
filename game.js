@@ -15,6 +15,7 @@ var lvl1 = (function () {
         // Physics.
         game.physics.startSystem(Phaser.Physics.ARCADE);
 
+        // Tile Map.
         this.tilemap = game.add.tilemap('map', 16, 16, 800, 640);
         this.tilemap.addTilesetImage('tileset');
         this.tilemap.addTilesetImage('floor');
@@ -30,17 +31,21 @@ var lvl1 = (function () {
         // Cracker Sprite
         this.cracker = game.add.sprite(60, 560, 'cracker');
         this.cracker.anchor.set(0.5);
-        this.cracker.scale.set(0.4);
         game.physics.arcade.enable(this.cracker);
 
-        // Pear Sprite
-//        for(var i=0; i<10; i++) {
-            this.pear = game.add.sprite((Math.random()*1000)%800, (Math.random()*1000)%640, 'pear');
-            this.pear.anchor.set(0.5);
-            this.pear.scale.set(0.08);
-//        }
-        game.physics.arcade.enable(this.pear);
+        // Pears Sprites
+        this.pears = game.add.group();
+        this.pears.enableBody = true;
+        this.pears.physicsBodyType = Phaser.Physics.ARCADE;
 
+        for(var i=0; i<13; i++) {
+            var x = ((Math.random()*1000) % 800),
+                y = ((Math.random()*1000) % 640);
+            var pear = this.pears.create(x, y, 'pear');
+            pear.anchor.setTo(0.5, 0.5);
+        }
+
+        // Game Keys.
         this.cursor = game.input.keyboard.createCursorKeys();
         this.cursor.spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         this.cursor.w = game.input.keyboard.addKey(Phaser.Keyboard.W);
@@ -71,12 +76,13 @@ var lvl1 = (function () {
             console.log('toc toc');
         }
 
-        // Collision
-        game.physics.arcade.overlap(this.cracker, this.pear, function () {
-            console.log('epa!');
-        }, null, this);
-
+        // Collisions
+        game.physics.arcade.overlap(this.cracker, this.pears, crackerGetPear, null, this);
         game.physics.arcade.collide(this.cracker, this.tilemap.floor);
+    };
+
+    var crackerGetPear = function (cracker, pear) {
+        pear.kill();
     };
 
     return {
