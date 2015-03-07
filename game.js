@@ -15,7 +15,7 @@ var lvl1 = (function () {
 
         // background layer
         // bug! fixing it...
-        // this.tilemap.background = this.tilemap.createLayer('background');
+        this.tilemap.background = this.tilemap.createLayer('background');
 
         // collision layer
         this.tilemap.floor = this.tilemap.createLayer('collide');

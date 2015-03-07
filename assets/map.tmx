@@ -3,7 +3,7 @@
  <tileset firstgid="1" name="tileset" tilewidth="16" tileheight="16">
   <image source="tileset.png" width="16" height="16"/>
  </tileset>
- <tileset firstgid="2" name="floor" tilewidth="32" tileheight="48">
+ <tileset firstgid="2" name="floor" tilewidth="16" tileheight="16">
   <image source="floor.png" width="128" height="48"/>
  </tileset>
  <layer name="collide" width="50" height="40">
@@ -13,7 +13,7 @@
  </layer>
  <layer name="background" width="50" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt1ckJACAMAMHg0X/LPiQNiAiRGdgaNgIAzvRLpfYwAGCbl0p+DgDv+TkA1DcK95sFBDoCSQ==
+   eJzt1VEKg0AMRVGpSGultCpS3f9GzfvICiZMGL0HLskOXtcBQDuGwORh9RWv+wQmb2uqeN0WmCzWWvECAHK8rLHw+i9Ze/6z5sLrv2Tt+W4dhdd/Yc8B4B7GwCRrz+fAJGvPj8CEPQeAe3g2nvs2nvs33pWcB78dIA==
   </data>
  </layer>
 </map>
