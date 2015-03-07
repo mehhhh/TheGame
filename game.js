@@ -1,9 +1,62 @@
-var level = (function () {
-    var create = function () {};
+var lvl1 = (function () {
+    var create = function () {
+        // Cracker Sprite
+        this.cracker = game.add.sprite(60, 560, 'cracker');
+        this.cracker.anchor.set(0.5);
+        this.cracker.scale.set(0.5);
+        game.physics.arcade.enable(this.cracker);
 
-    var preload = function () {};
+        // Pear Sprite
+//        for(var i=0; i<10; i++) {
+            this.pear = game.add.sprite((Math.random()*1000)%800, (Math.random()*1000)%640, 'pear');
+            this.pear.anchor.set(0.5);
+            this.pear.scale.set(0.08);
+//        }
+        game.physics.arcade.enable(this.pear);
 
-    var update = function () {};
+        // Physics
+        game.physics.startSystem(Phaser.Physics.ARCADE);
+
+        this.cursor = game.input.keyboard.createCursorKeys();
+        this.cursor.spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+        this.cursor.w = game.input.keyboard.addKey(Phaser.Keyboard.W);
+        this.cursor.a = game.input.keyboard.addKey(Phaser.Keyboard.A);
+        this.cursor.s = game.input.keyboard.addKey(Phaser.Keyboard.S);
+        this.cursor.d = game.input.keyboard.addKey(Phaser.Keyboard.D);
+    };
+
+    var preload = function () {
+        game.load.image('cracker', 'assets/cracker.png');
+        game.load.image('pear', 'assets/pear.jpg');
+    };
+
+    var update = function () {
+        // Initial values.
+        this.cracker.body.velocity.x = 0;
+        this.cracker.body.velocity.y = 0;
+
+        // Game keys.
+        if(this.cursor.right.isDown || this.cursor.d.isDown) {
+            this.cracker.body.velocity.x = 250;
+        }
+        if(this.cursor.left.isDown || this.cursor.a.isDown) {
+            this.cracker.body.velocity.x = -250;
+        }
+        if(this.cursor.up.isDown || this.cursor.w.isDown) {
+            this.cracker.body.velocity.y = -250;
+        }
+        if(this.cursor.down.isDown || this.cursor.s.isDown) {
+            this.cracker.body.velocity.y = 250;
+        }
+        if(this.cursor.spacebar.isDown) {
+            console.log('toc toc');
+        }
+
+        // Collision
+        game.physics.arcade.overlap(this.cracker, this.pear, function () {
+            console.log('epa!');
+        }, null, this);
+    };
 
     return {
         create : create,
