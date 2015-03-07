@@ -11,12 +11,17 @@
  </tileset>
  <layer name="background" width="50" height="40">
   <data encoding="base64" compression="zlib">
-   eJztmMlKQ0EQRRtFNBHRKBLjnERjBud5yv//lvcS7splNdVU0wcOp7bvvcWFl1JKx/DEWN3kFJ45VlzCobG6+SwjOHasmMAbY3VfwCmcOVbcwjtjdfP93MMHx4pn+GKsbn6TV/jmWPEJv4zVvYDf8MexYiOjZA2uO1bsZJR04bZjxWFGyT48cGxttD3/v+ekhj0nNew5qWHPSQ17Tkrt+RbsGKublNrzPdgzVjcptedHcGCsbtL23Ebb87bnbc/bnkfZ805GSak972WUlNrzQUZJ23Mb52n1XzZqxRW8DlwxT6v/mVErHuFT4Ip3+BG44hcuA1dsBlfsBlf0g1sTf22I3gs=
+   eJztlVtOAlEQRG80REdCdDQERvCFoCCgAr4f+98W1R+1gr7pm570SU5O7aBSSukSjpTlFsbwyrDkFt4pyy1M4L1hyQN8VJZbmMOFYckKrpXlFp7hi2HJFu6U5Rbe4LthyRf8VpZb+IG/hiWdjAoH8NCwpJdR4QR2DUv6GRXO4YVh20b8efx5/Hn8uZc/P4aVstxCqT8/g7Wy3EKpPx/CRlluIf5cR/x5/Hn8efy5lz+vMiqU+vM6o0KpP28yKsSf67iGN45LpnDmuOQJLh2XvMKN45IP+Om45A/+Oy45ci45dS4ZOLdN7AH/tN1c
   </data>
  </layer>
  <layer name="collide" width="50" height="40">
   <data encoding="base64" compression="zlib">
-   eJztlUEKACEMxPT/n94HiMMeSlokgV4j8TJ7rbUfuUqqfX/ftOPupLEjO2nsyE6a1zpeueq/obEjO2nsyE4aO7KTxo7spOneX/f8fNOOu5PGjuyksSM7aezITpru/Z285x3YMQs7ZmHHLOyYRff+Vt4H4EsBWw==
+   eJztlcEJwDAMxOr9l+4AJUehRjZFgnxllM/V1Us1+97e7L5rx7ebdpydNHZkJ40d2UlTP3vdf0NjR3bS2JGdNHZkJ40d2Ukzvb/u+fOmHWcnjR3ZSWNHdtLYkZ000/u7ec8nsGMXduzCjl3YsYvp/e18NzVQASw=
+  </data>
+ </layer>
+ <layer name="door" width="50" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt1sEJACAMBMGk/6Z9WIEgeJGZAo78NlV0yAYAsN3uqk4DwCwv2u1fAIAzCe1MuAGA/yyyXAAJ
   </data>
  </layer>
 </map>

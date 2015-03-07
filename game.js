@@ -6,6 +6,8 @@ var lvl1 = (function () {
         game.load.image('tileset', 'assets/tileset.png');
         game.load.image('wall', 'assets/wall.png');
 
+        game.load.spritesheet('door', 'assets/door.png', 48, 80);
+
         game.load.image('cracker', 'assets/cracker.png');
         game.load.image('pear', 'assets/pear.png');
     };
@@ -23,6 +25,9 @@ var lvl1 = (function () {
         this.tilemap.addTilesetImage('floor');
         this.tilemap.addTilesetImage('wall');
 
+        // "promise of a door" layer
+        this.tilemap.door = this.tilemap.createLayer('door');
+
         // background layer
         this.tilemap.background = this.tilemap.createLayer('background');
 
@@ -35,6 +40,7 @@ var lvl1 = (function () {
         this.cracker = game.add.sprite(60, 560, 'cracker');
         this.cracker.anchor.set(0.5);
         game.physics.arcade.enable(this.cracker);
+        // this.cracker.body.acceleration.y = 481;
 
         // Pears Sprites
         this.pears = game.add.group();
@@ -55,6 +61,14 @@ var lvl1 = (function () {
         this.cursor.a = game.input.keyboard.addKey(Phaser.Keyboard.A);
         this.cursor.s = game.input.keyboard.addKey(Phaser.Keyboard.S);
         this.cursor.d = game.input.keyboard.addKey(Phaser.Keyboard.D);
+
+        // creating doors
+        this.doors = game.add.group();
+        this.tilemap.createFromTiles(1, -1, 'door', this.tilemap.door, this.doors);
+
+
+        // bringing to top things
+        this.cracker.bringToTop();
     };
 
     var update = function () {
