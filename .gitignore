@@ -1,2 +1,7 @@
+## Emacs
 .*
 *~
+
+## PhpStorm
+*.iml
+.idea/
