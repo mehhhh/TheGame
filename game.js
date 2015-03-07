@@ -1,5 +1,32 @@
 var lvl1 = (function () {
+
+    var preload = function () {
+        game.load.tilemap('map', 'assets/map.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.image('floor', 'assets/floor.png');
+        game.load.image('tileset', 'assets/tileset.png');
+        game.load.image('cracker', 'assets/cracker.png');
+        game.load.image('pear', 'assets/pear.jpg');
+    };
+
     var create = function () {
+        // Background color.
+        game.stage.backgroundColor = '#eee';
+
+        // Physics.
+        game.physics.startSystem(Phaser.Physics.ARCADE);
+
+        this.tilemap = game.add.tilemap('map', 16, 16, 800, 640);
+        this.tilemap.addTilesetImage('tileset');
+        this.tilemap.addTilesetImage('floor');
+
+        // background layer
+        this.tilemap.background = this.tilemap.createLayer('background');
+
+        // collision layer
+        this.tilemap.floor = this.tilemap.createLayer('collide');
+        game.physics.arcade.enable(this.tilemap.floor);
+        this.tilemap.setCollisionByExclusion([], true, this.tilemap.floor);
+
         // Cracker Sprite
         this.cracker = game.add.sprite(60, 560, 'cracker');
         this.cracker.anchor.set(0.5);
@@ -14,20 +41,12 @@ var lvl1 = (function () {
 //        }
         game.physics.arcade.enable(this.pear);
 
-        // Physics
-        game.physics.startSystem(Phaser.Physics.ARCADE);
-
         this.cursor = game.input.keyboard.createCursorKeys();
         this.cursor.spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         this.cursor.w = game.input.keyboard.addKey(Phaser.Keyboard.W);
         this.cursor.a = game.input.keyboard.addKey(Phaser.Keyboard.A);
         this.cursor.s = game.input.keyboard.addKey(Phaser.Keyboard.S);
         this.cursor.d = game.input.keyboard.addKey(Phaser.Keyboard.D);
-    };
-
-    var preload = function () {
-        game.load.image('cracker', 'assets/cracker.png');
-        game.load.image('pear', 'assets/pear.jpg');
     };
 
     var update = function () {
@@ -56,6 +75,8 @@ var lvl1 = (function () {
         game.physics.arcade.overlap(this.cracker, this.pear, function () {
             console.log('epa!');
         }, null, this);
+
+        // game.physics.arcade.collide(yoursprite, this.tilemap.floor);
     };
 
     return {
