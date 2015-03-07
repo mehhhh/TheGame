@@ -5,7 +5,7 @@ var lvl1 = (function () {
         game.load.image('floor', 'assets/floor.png');
         game.load.image('tileset', 'assets/tileset.png');
         game.load.image('cracker', 'assets/cracker.png');
-        game.load.image('pear', 'assets/pear.jpg');
+        game.load.image('pear', 'assets/pear.png');
     };
 
     var create = function () {
@@ -30,7 +30,7 @@ var lvl1 = (function () {
         // Cracker Sprite
         this.cracker = game.add.sprite(60, 560, 'cracker');
         this.cracker.anchor.set(0.5);
-        this.cracker.scale.set(0.5);
+        this.cracker.scale.set(0.4);
         game.physics.arcade.enable(this.cracker);
 
         // Pear Sprite
@@ -76,7 +76,7 @@ var lvl1 = (function () {
             console.log('epa!');
         }, null, this);
 
-        // game.physics.arcade.collide(yoursprite, this.tilemap.floor);
+        game.physics.arcade.collide(this.cracker, this.tilemap.floor);
     };
 
     return {
