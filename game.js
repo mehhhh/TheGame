@@ -53,12 +53,15 @@ var lvl1 = (function () {
         // creating secres
         this.secres = parseSecres(this, this.tilemap, this.tilemap.secre);
 
+        // scoreboard
+        this.scoreboard = scoreboard();
+
         // bringing to top things (below this line)
         this.cracker.bringToTop();
     };
 
     var update = function () {
-        // sysadmin fixese the atm's
+        // sysadmin fixes the atm's
         game.physics.arcade.overlap(this.atms, this.sysadmins,
                                     function (atm, sysadmin) {
                                         atm.animations.play('ok');
