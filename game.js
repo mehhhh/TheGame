@@ -50,14 +50,20 @@ var lvl1 = (function () {
                                         this.phones);
         // creating atms
         this.atms = parseAtms(this, this.tilemap, this.tilemap.atm);
-        // creating secres
-        this.secres = parseSecres(this, this.tilemap, this.tilemap.secre);
-
         // scoreboard
-        this.scoreboard = scoreboard();
+        this.scoreboard = scoreboard(this.phones);
+        // creating secres
+        this.secres = parseSecres(this, this.tilemap, this.tilemap.secre, this.phones, this.scoreboard);
+
 
         // bringing to top things (below this line)
         this.cracker.bringToTop();
+        this.sysadmins.forEach( function (sysadmin) {
+            sysadmin.bringToTop();
+        });
+        this.secres.forEach( function (secre) {
+            secre.bringToTop();
+        });
     };
 
     var update = function () {
@@ -66,6 +72,7 @@ var lvl1 = (function () {
                                     function (atm, sysadmin) {
                                         atm.animations.play('ok');
                                     });
+        this.secres.lookPhone();
     };
 
     // check the cracker.js file! the overlapDoor function ;)

@@ -4,6 +4,14 @@ var parseSysadmins = function (level, tilemap, sysadminLayer, phones) {
     tilemap.createFromTiles(1, -1, 'sysadmin', sysadminLayer, sysadmins);
 
     var update = function () {
+
+        game.physics.arcade.overlap(this, phones, function (sysadmin, phone) {
+            if (phone.isRinging()) {
+                console.log('gameoveer');
+                // JHTAN GAMEOVER NAO!!!!!!!!!
+            }
+        });
+
         if (this.phone && this.phone.isRinging()) {
             this.scale.set(generic.getXDirection(this, this.phone), 1);
             this.body.velocity.x = this.scale.x * sysadmins.speed;
