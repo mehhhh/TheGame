@@ -1,7 +1,8 @@
 var map = function (level, xPartition) {
     // returns the map, which is a phaser's tilemap.
-    var tilemap = game.add.tilemap('map', 16, 16, 800, 640),
-        i, j, distance;
+    var tilemap = game.add.tilemap('map', 16, 16, 800, 640);
+
+    tilemap.xPartition = xPartition;
 
     tilemap.addTilesetImage('tileset');
     tilemap.addTilesetImage('floor');
@@ -9,6 +10,10 @@ var map = function (level, xPartition) {
 
     // "promise of a door" layer
     tilemap.door = tilemap.createLayer('door');
+    // "promise of a phone" layer
+    tilemap.phone = tilemap.createLayer('phone');
+    // "promise of sysadmins" layer
+    tilemap.sysadmin = tilemap.createLayer('sysadmin');
 
     // background layer
     tilemap.background = tilemap.createLayer('background');
@@ -19,7 +24,8 @@ var map = function (level, xPartition) {
     tilemap.setCollisionByExclusion([], true, tilemap.floor);
 
     tilemap.parseDoors = function () {
-        var doors = game.add.group();
+        var doors = game.add.group(),
+            i, j, distance;
         this.createFromTiles(1, -1, 'door', this.door, doors);
 
         var zindex = 0;
@@ -32,42 +38,25 @@ var map = function (level, xPartition) {
             door.body.immovable = true;
             door.z = zindex++;
 
-            // setting anchor to center, without changing position
             // I need the anchor at the center, because it looks awesome
             // on the rotation effect
-            door.x += door.width * .5;
-            door.y += door.height * .5;
-            door.anchor.set(.5, .5);
-
-            door.shaking = {
-                delay: 20,
-                cooldown: 10,
-                direction: -1
-            };
-
-            // i know this sucks DX let's fix it later
-            var shake = function () {
-                this.isShaking = true;
-                if (this.shaking.cooldown++ >= door.shaking.delay) {
-                    // math magic to alternate between -1 and 1
-                    // i have tested it... it DO work.
-                    this.shaking.direction -= 2*this.shaking.direction;
-
-                    this.shaking.cooldown = 0;
-                    this.body.angularVelocity = this.shaking.direction * 30;
-                }
-            };
+            generic.silentlySetAnchor(door);
 
             door.isOnTheSameRoomThan = function (anotherDoor) {
                 return (this.x < xPartition && anotherDoor.x < xPartition) ||
                     (this.x > xPartition && anotherDoor.x > xPartition);
             };
 
+            // check genericSpriteFunctions.js if you are confused about this.
+            generic.shake.init(door);
             door.update = function () {
                 this.isShaking = false;
-                game.physics.arcade.overlap(this, level.cracker, shake, null, this);
+                game.physics.arcade.overlap(this, level.cracker,
+                                            function (door, cracker) {
+                                                    generic.shake.shake(door);
+                                            });
                 if (!this.isShaking) {
-                    this.angularVelocity = this.rotation = 0;
+                    generic.shake.stop(this);
                 }
             };
         });

@@ -29,25 +29,29 @@ var cracker = function (level) {
         this.body.velocity.y = 0;
 
         // Game keys.
-        if (level.cursor.isDown('right')) {
-            this.body.velocity.x += this.speed;
-            this.scale.set(1,1);
-        }
-        if ( level.cursor.isDown('left')) {
-            this.body.velocity.x -= this.speed;
-            this.scale.set(-1,1);
-        }
-        if ( level.cursor.isDown('down')) {
-            this.body.velocity.y += this.speed;
-        }
-        if ( level.cursor.isDown('up')) {
-            this.body.velocity.y -= this.speed;
+        if (!level.cursor.action.isDown) {
+            if (level.cursor.isDown('right')) {
+                this.body.velocity.x += this.speed;
+                this.scale.set(1,1);
+            }
+            if ( level.cursor.isDown('left')) {
+                this.body.velocity.x -= this.speed;
+                this.scale.set(-1,1);
+            }
+            if ( level.cursor.isDown('down')) {
+                this.body.velocity.y += this.speed;
+            }
+            if ( level.cursor.isDown('up')) {
+                this.body.velocity.y -= this.speed;
+            }
         }
     };
 
     sprite.isWalking = function () {
         var directions = ['up', 'down', 'left', 'right'],
             direction;
+
+        if (level.cursor.action.isDown) return false;
 
         for (direction of directions) {
             if (level.cursor.isDown(direction)) {
@@ -86,7 +90,6 @@ var cracker = function (level) {
     sprite.update = function () {
         this.doorCooldown--;
         this.visualUpdate();
-        this.bringToTop();
         this.motion();
         this.collisions();
     };
