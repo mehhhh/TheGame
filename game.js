@@ -64,6 +64,8 @@ var lvl1 = (function () {
 
         // creating doors
         this.doors = game.add.group();
+        this.doors.enableBody = true;
+        this.doors.physicsBodyType = Phaser.Physics.ARCADE;
         this.tilemap.createFromTiles(1, -1, 'door', this.tilemap.door, this.doors);
 
 
@@ -96,10 +98,25 @@ var lvl1 = (function () {
         // Collisions
         game.physics.arcade.overlap(this.cracker, this.pears, crackerGetPear, null, this);
         game.physics.arcade.collide(this.cracker, this.tilemap.floor);
+        game.physics.arcade.overlap(this.cracker, this.doors, crackerOverlapDoor, null, this);
+    };
+
+    var reloadCracker = function (x, y) {
+        this.cracker = game.add.sprite(x, y, 'cracker');
+        this.cracker.anchor.set(0.5);
+        game.physics.arcade.enable(this.cracker);
     };
 
     var crackerGetPear = function (cracker, pear) {
         pear.kill();
+    };
+
+    var crackerOverlapDoor = function (cracker, door) {
+        console.log(door.z);
+        if(door.z === 7) {
+            this.cracker.x = 250;
+            this.cracker.y = 50;
+        }
     };
 
     return {
