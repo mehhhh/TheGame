@@ -12,10 +12,13 @@ var lvl1 = (function () {
         // furniture
         game.load.spritesheet('door', 'assets/door.png', 48, 80);
         game.load.spritesheet('phone', 'assets/phone.png', 32, 32);
+        game.load.spritesheet('atm', 'assets/atm.png', 48, 80);
 
         // ppj
         game.load.spritesheet('cracker', 'assets/cracker.png', 48, 96);
         game.load.spritesheet('sysadmin', 'assets/sysadmin.png', 48, 96);
+        game.load.spritesheet('secre0', 'assets/ingenuous.png', 48, 96);
+        game.load.spritesheet('secre1', 'assets/ingenuous2.png', 48, 96);
         game.load.image('pear', 'assets/pear.png');
 
         // removing blury images
@@ -42,14 +45,24 @@ var lvl1 = (function () {
         this.doors = this.tilemap.parseDoors();
         // creating phones
         this.phones = parsePhones(this, this.tilemap, this.tilemap.phone);
+        // creating sysadmins
         this.sysadmins = parseSysadmins(this, this.tilemap, this.tilemap.sysadmin,
                                         this.phones);
+        // creating atms
+        this.atms = parseAtms(this, this.tilemap, this.tilemap.atm);
+        // creating secres
+        this.secres = parseSecres(this, this.tilemap, this.tilemap.secre);
 
         // bringing to top things (below this line)
         this.cracker.bringToTop();
     };
 
     var update = function () {
+        // sysadmin fixese the atm's
+        game.physics.arcade.overlap(this.atms, this.sysadmins,
+                                    function (atm, sysadmin) {
+                                        atm.animations.play('ok');
+                                    });
     };
 
     // check the cracker.js file! the overlapDoor function ;)

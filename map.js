@@ -14,6 +14,10 @@ var map = function (level, xPartition) {
     tilemap.phone = tilemap.createLayer('phone');
     // "promise of sysadmins" layer
     tilemap.sysadmin = tilemap.createLayer('sysadmin');
+    // "promise of atm" layer
+    tilemap.atm = tilemap.createLayer('atm');
+    // "promise of secre" layer
+    tilemap.secre = tilemap.createLayer('secre');
 
     // background layer
     tilemap.background = tilemap.createLayer('background');
