@@ -93,3 +93,4 @@ game.state.start('lvl1');
 
 // Global variables
 window.firstAtmCracked = false;
+window.firstPhishing = false;

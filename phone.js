@@ -12,6 +12,12 @@ var parsePhones = function (level, tilemap, phoneLayer) {
         if (!this.isShaking) {
             generic.shake.stop(this);
         } else if (level.cursor.action.isDown) {
+            if(!window.firstPhishing) {
+                window.firstPhishing = true;
+                game.paused = true;
+                window.showPhishingModal();
+            }
+
             phones.forEach( function (phone) {
                 phone.animations.play('ring');
             });
