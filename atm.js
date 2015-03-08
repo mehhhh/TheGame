@@ -16,6 +16,11 @@ var parseAtms = function (level, tilemap, atmLayer) {
             // atm.
             if (level.cursor.action.isDown) {
                 this.animations.play('cracked');
+                if(!window.firstAtmCracked) {
+                    window.firstAtmCracked = true;
+                    game.paused = true;
+                    window.showAtmModal();
+                }
             }
         }
     };
