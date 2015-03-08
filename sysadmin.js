@@ -9,6 +9,7 @@ var parseSysadmins = function (level, tilemap, sysadminLayer, phones) {
             if (phone.isRinging()) {
                 console.log('gameoveer');
                 // JHTAN GAMEOVER NAO!!!!!!!!!
+                window.showGameOverModal();
             }
         });
 
