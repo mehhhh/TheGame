@@ -3,15 +3,17 @@ var randomBetween = function (max, min) {
 };
 
 // 528 y
-var spawner = function (direction, x, y) {
+var spawner = function (level, direction, x, y) {
+    this.level = level
     this.x = x;
     this.y = y;
     this.direction = direction;
 
-    this.max = 600;
-    this.min = 300;
+    this.max = 400;
+    this.min = 100;
 
     this.setCooldown();
+    this.cooldown = 10;
 };
 
 spawner.prototype.setCooldown = function () {
@@ -19,11 +21,14 @@ spawner.prototype.setCooldown = function () {
 };
 
 spawner.prototype.update = function () {
-    if (this.cooldown === 0) {
+    this.cooldown--;
 
+    if (this.cooldown <= 0) {
+        this.spawn();
+        this.setCooldown();
     }
 };
 
 spawner.prototype.spawn = function () {
-
+    someone(this.level, 16, 528);
 };

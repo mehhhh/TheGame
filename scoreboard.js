@@ -5,7 +5,7 @@ var scoreboard = function (phones) {
     text.data = 0;
 
     text.update = function () {
-        this.text = 'DINERO: ' + this.money +
+        this.text = 'DINERO: ' + Math.round(this.money) +
             '\nDATOS:  ' + this.data;
     };
 
