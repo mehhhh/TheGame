@@ -45,8 +45,8 @@ var map = function (level) {
                 this.isShaking = true;
                 if (this.shaking.cooldown++ >= door.shaking.delay) {
                     // math magic to alternate between -1 and 1
+                    // i have tested it... it DO work.
                     this.shaking.direction -= 2*this.shaking.direction;
-                    console.log(this.shaking.direction);
 
                     this.shaking.cooldown = 0;
                     this.body.angularVelocity = this.shaking.direction * 30;
