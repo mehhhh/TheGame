@@ -29,7 +29,7 @@
    eJzt1bENADAIwDD4/2ku6NAFJLAvyJYIgH45HQAAh/x+16cBYDevBwCAtwJrnAAF
   </data>
  </layer>
- <layer name="sysadmin" width="50" height="40">
+ <layer name="sysadmin" width="50" height="40" visible="0">
   <data encoding="base64" compression="zlib">
    eJztzgENAAAIA6Dbv7Qx7iYkIOGzaQcAAAAAAAAAjlg8gAAC
   </data>
@@ -37,6 +37,11 @@
  <layer name="atm" width="50" height="40" visible="0">
   <data encoding="base64" compression="zlib">
    eJzty7ENAAAIw7Dy/9N8wIBgs9coCQAAAAAAwL9atOkBgGsNMvQABA==
+  </data>
+ </layer>
+ <layer name="secre" width="50" height="40" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJzt1aEBADAIBDHYf2kWqAGKS+y/vwh4y+EGANzqdPjqCwDs/W6vlgMAAOwVtHAACA==
   </data>
  </layer>
 </map>

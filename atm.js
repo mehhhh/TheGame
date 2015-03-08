@@ -14,6 +14,9 @@ var parseAtms = function (level, tilemap, atmLayer) {
         } else {
             // the code here will be executed iif the cracker is close to the
             // atm.
+            if (level.cursor.action.isDown) {
+                this.animations.play('cracked');
+            }
         }
     };
 

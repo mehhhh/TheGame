@@ -16,6 +16,8 @@ var map = function (level, xPartition) {
     tilemap.sysadmin = tilemap.createLayer('sysadmin');
     // "promise of atm" layer
     tilemap.atm = tilemap.createLayer('atm');
+    // "promise of secre" layer
+    tilemap.secre = tilemap.createLayer('secre');
 
     // background layer
     tilemap.background = tilemap.createLayer('background');
