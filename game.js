@@ -55,6 +55,8 @@ var lvl1 = (function () {
         // creating secres
         this.secres = parseSecres(this, this.tilemap, this.tilemap.secre, this.phones, this.scoreboard);
 
+        this.spawner = new spawner(this);
+
 
         // bringing to top things (below this line)
         this.cracker.bringToTop();
@@ -67,6 +69,7 @@ var lvl1 = (function () {
     };
 
     var update = function () {
+        this.spawner.update();
         // sysadmin fixes the atm's
         game.physics.arcade.overlap(this.atms, this.sysadmins,
                                     function (atm, sysadmin) {
