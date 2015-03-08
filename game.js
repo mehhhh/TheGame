@@ -3,6 +3,7 @@ var lvl1 = (function () {
 
     var preload = function () {
         // tilemap
+        this.xPartition = xPartition;
         game.load.tilemap('map', 'assets/map.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.image('floor', 'assets/floor.png');
         game.load.image('tileset', 'assets/tileset.png');
@@ -10,9 +11,11 @@ var lvl1 = (function () {
 
         // furniture
         game.load.spritesheet('door', 'assets/door.png', 48, 80);
+        game.load.spritesheet('phone', 'assets/phone.png', 32, 32);
 
         // ppj
         game.load.spritesheet('cracker', 'assets/cracker.png', 48, 96);
+        game.load.spritesheet('sysadmin', 'assets/sysadmin.png', 48, 96);
         game.load.image('pear', 'assets/pear.png');
 
         // removing blury images
@@ -37,8 +40,13 @@ var lvl1 = (function () {
 
         // creating doors
         this.doors = this.tilemap.parseDoors();
+        // creating phones
+        this.phones = parsePhones(this, this.tilemap, this.tilemap.phone);
+        this.sysadmins = parseSysadmins(this, this.tilemap, this.tilemap.sysadmin,
+                                        this.phones);
 
         // bringing to top things (below this line)
+        this.cracker.bringToTop();
     };
 
     var update = function () {
