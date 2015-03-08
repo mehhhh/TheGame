@@ -58,6 +58,12 @@ var lvl1 = (function () {
 
         // bringing to top things (below this line)
         this.cracker.bringToTop();
+        this.sysadmins.forEach( function (sysadmin) {
+            sysadmin.bringToTop();
+        });
+        this.secres.forEach( function (secre) {
+            secre.bringToTop();
+        });
     };
 
     var update = function () {

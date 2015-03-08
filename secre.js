@@ -30,7 +30,7 @@ var parseSecres = function (level, tilemap, secreLayer, phones, scoreboard) {
                 this.phone.alpha = .5;
                 this.isAnswering = true;
                 this.answertimer = this.answerDelay;
-                scoreboard.winMoney(1);
+                scoreboard.winMoney(100);
             } else {
                 this.body.velocity.x = this.scale.x * this.speed;
             }
@@ -66,6 +66,8 @@ var parseSecres = function (level, tilemap, secreLayer, phones, scoreboard) {
 
         return ringing;
     };
+
+    secres.isPhoneRinging = isPhoneRinging;
 
     secres.forEach( function (secre) {
         // jhtan! everything you do to the "secre" here, will happen to all the secres

@@ -5,8 +5,8 @@ var scoreboard = function (phones) {
     text.data = 0;
 
     text.update = function () {
-        this.text = 'MONEY: ' + this.money +
-            '\nDATA:  ' + this.data;
+        this.text = 'DINERO: ' + this.money +
+            '\nDATOS:  ' + this.data;
     };
 
     text.winMoney = function (qty) {

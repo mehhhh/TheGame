@@ -5,8 +5,11 @@ var parseSysadmins = function (level, tilemap, sysadminLayer, phones) {
 
     var update = function () {
 
-        game.physics.arcade.collide(this, phones, function (sysadmin, phone) {
-            // JHTAN GAMEOVER NAO!!!!!!!!!
+        game.physics.arcade.overlap(this, phones, function (sysadmin, phone) {
+            if (phone.isRinging()) {
+                console.log('gameoveer');
+                // JHTAN GAMEOVER NAO!!!!!!!!!
+            }
         });
 
         if (this.phone && this.phone.isRinging()) {
