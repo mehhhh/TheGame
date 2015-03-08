@@ -3,7 +3,7 @@ var cracker = function (level) {
     var sprite = game.add.sprite(60, 416, 'cracker');
 
     sprite.anchor.set(0.5);
-    sprite.speed = 100;
+    sprite.speed = 150;
     sprite.animations.add('walk', [0,1,1,2,3,4,3,3,2,1], 9, true);
     sprite.animations.add('stand', [2]);
     sprite.animations.play('walk');
