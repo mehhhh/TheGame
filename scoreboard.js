@@ -1,4 +1,4 @@
-var scoreboard = function () {
+var scoreboard = function (phones) {
     var style = { font: '15px Monospace', fill: '#000', align: 'left' };
     var text = game.add.text(18, 18, '', style);
     text.money = 0;
