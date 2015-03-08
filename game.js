@@ -11,7 +11,7 @@ var lvl1 = (function () {
 
         // furniture
         game.load.spritesheet('door', 'assets/door.png', 48, 80);
-        game.load.spritesheet('phone', 'assets/phone.png', 32, 32);
+        game.load.spritesheet('phone', 'assets/phone.png', 32, 48);
         game.load.spritesheet('atm', 'assets/atm.png', 48, 80);
 
         // ppj
