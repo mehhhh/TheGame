@@ -77,7 +77,7 @@ var cracker = function (level) {
     };
 
     sprite.collisions = function () {
-        // game.physics.arcade.collide(this, level.tilemap.floor);
+        game.physics.arcade.collide(this, level.tilemap.floor);
         game.physics.arcade.overlap(level.doors, this, overlapDoor);
     };
 
