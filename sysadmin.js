@@ -9,8 +9,6 @@ var parseSysadmins = function (level, tilemap, sysadminLayer, phones) {
             this.body.velocity.x = this.scale.x * sysadmins.speed;
             this.animations.play('walk');
         } else {
-            console.log(this.body.x + ' - ' + this.body.y);
-
             // Patrol
             this.animations.play('walk');
             if(this.body.x > 510 && this.body.x < 515 && this.body.y === 32 && this.body.velocity.x < 0) {
