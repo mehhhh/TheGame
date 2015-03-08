@@ -87,3 +87,6 @@ var lvl1 = (function () {
 var game = new Phaser.Game(800, 640, Phaser.AUTO, 'game');
 game.state.add('lvl1', lvl1);
 game.state.start('lvl1');
+
+// Global variables
+window.firstAtmCracked = false;
