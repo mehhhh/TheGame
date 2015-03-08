@@ -4,9 +4,19 @@ var cracker = function (level) {
 
     sprite.anchor.set(0.5);
     sprite.speed = 100;
-    sprite.animations.add('walk', [1,0,2,0], 3, true);
+    sprite.animations.add('walk', [0,1,1,2,3,4,3,3,2,1], 9, true);
+    sprite.animations.add('stand', [2]);
     sprite.animations.play('walk');
     game.physics.arcade.enable(sprite);
+
+    // keeps the sprite visualy updated in an accurately manner
+    sprite.visualUpdate = function () {
+        if (this.isWalking()) {
+            this.animations.play('walk');
+        } else {
+            this.animations.play('stand');
+        }
+    };
 
     // updates the motion of the cracker.
     sprite.motion = function () {
@@ -15,32 +25,52 @@ var cracker = function (level) {
         this.body.velocity.y = 0;
 
         // Game keys.
-        switch (true) {
-        case level.cursor.isDown('right'):
+        if (level.cursor.isDown('right')) {
             this.body.velocity.x += this.speed;
             this.scale.set(1,1);
-            break;
-        case level.cursor.isDown('left'):
+        }
+        if ( level.cursor.isDown('left')) {
             this.body.velocity.x -= this.speed;
             this.scale.set(-1,1);
-            break;
-        case level.cursor.isDown('down'):
+        }
+        if ( level.cursor.isDown('down')) {
             this.body.velocity.y += this.speed;
-            break;
-        case level.cursor.isDown('up'):
+        }
+        if ( level.cursor.isDown('up')) {
             this.body.velocity.y -= this.speed;
-            break;
-        default: break;
+        }
+    };
+
+    sprite.isWalking = function () {
+        var directions = ['up', 'down', 'left', 'right'],
+            direction;
+
+        for (direction of directions) {
+            if (level.cursor.isDown(direction)) {
+                return true;
+            }
+        }
+
+        return false;
+    };
+
+    var overlapDoor = function (cracker, door) {
+        console.log(door.z);
+        if(door.z === 7) {
+            cracker.x = 250;
+            cracker.y = 50;
         }
     };
 
     sprite.collisions = function () {
         game.physics.arcade.collide(this, level.tilemap.floor);
+        game.physics.arcade.overlap(level.doors, this, overlapDoor);
     };
 
     // update is now a member of an sprite object. Phaser will automagically
     // call it on every update cycle.
     sprite.update = function () {
+        this.visualUpdate();
         this.bringToTop();
         this.motion();
         this.collisions();

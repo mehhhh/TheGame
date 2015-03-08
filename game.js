@@ -13,6 +13,9 @@ var lvl1 = (function () {
         // ppj
         game.load.spritesheet('cracker', 'assets/cracker.png', 48, 96);
         game.load.image('pear', 'assets/pear.png');
+
+        // removing blury images
+        game.stage.smoothed = false;
     };
 
     var create = function () {
@@ -36,13 +39,7 @@ var lvl1 = (function () {
     var update = function () {
     };
 
-    var crackerOverlapDoor = function (cracker, door) {
-        console.log(door.z);
-        if(door.z === 7) {
-            this.cracker.x = 250;
-            this.cracker.y = 50;
-        }
-    };
+    // check the cracker.js file! the overlapDoor function ;)
 
     return {
         create : create,
