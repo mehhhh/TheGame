@@ -34,7 +34,7 @@ var parsePhones = function (level, tilemap, phoneLayer) {
     };
 
     phones.forEach( function (phone) {
-        phone.animations.add('ring', [1,0,2,0], 8, true);
+        phone.animations.add('ring', [1,2], 8, true);
         phone.animations.add('stand', [0]);
         game.physics.arcade.enable(phone);
         generic.silentlySetAnchor(phone);
