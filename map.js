@@ -1,6 +1,7 @@
-var map = function (level) {
+var map = function (level, xPartition) {
     // returns the map, which is a phaser's tilemap.
-    var tilemap = game.add.tilemap('map', 16, 16, 800, 640);
+    var tilemap = game.add.tilemap('map', 16, 16, 800, 640),
+        i, j, distance;
 
     tilemap.addTilesetImage('tileset');
     tilemap.addTilesetImage('floor');
@@ -22,14 +23,18 @@ var map = function (level) {
         this.createFromTiles(1, -1, 'door', this.door, doors);
 
         var zindex = 0;
+        var doorVec = [];
         doors.forEach( function (door) {
             // jhtan! inside this function, you can play with each door of the
             // doors group.
+            doorVec.push(door);
             game.physics.arcade.enable(door);
             door.body.immovable = true;
             door.z = zindex++;
 
             // setting anchor to center, without changing position
+            // I need the anchor at the center, because it looks awesome
+            // on the rotation effect
             door.x += door.width * .5;
             door.y += door.height * .5;
             door.anchor.set(.5, .5);
@@ -53,6 +58,11 @@ var map = function (level) {
                 }
             };
 
+            door.isOnTheSameRoomThan = function (anotherDoor) {
+                return (this.x < xPartition && anotherDoor.x < xPartition) ||
+                    (this.x > xPartition && anotherDoor.x > xPartition);
+            };
+
             door.update = function () {
                 this.isShaking = false;
                 game.physics.arcade.overlap(this, level.cracker, shake, null, this);
@@ -61,6 +71,24 @@ var map = function (level) {
                 }
             };
         });
+
+        // setting links with bruteforce, because the hell with it!
+        for (i of doorVec) {
+            for (j of doorVec) {
+                if (i !== j && i.isOnTheSameRoomThan(j)) {
+                    yDistance = i.y - j.y;
+                    if (Math.abs(yDistance) <= 176) { // this stinks
+                        if (yDistance < 0) {
+                            i.down = j;
+                            j.up = i;
+                        } else {
+                            i.up = j;
+                            j.down = i;
+                        }
+                    }
+                }
+            }
+        }
 
         return doors;
     };

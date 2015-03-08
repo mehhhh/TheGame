@@ -8,6 +8,10 @@ var cracker = function (level) {
     sprite.animations.add('stand', [2]);
     sprite.animations.play('walk');
     game.physics.arcade.enable(sprite);
+    sprite.body.collideWorldBounds = true;
+
+    // controls how much time will wait until teletransporting again
+    sprite.doorCooldown = 0;
 
     // keeps the sprite visualy updated in an accurately manner
     sprite.visualUpdate = function () {
@@ -55,21 +59,32 @@ var cracker = function (level) {
     };
 
     var overlapDoor = function (cracker, door) {
-        console.log(door.z);
-        if(door.z === 7) {
-            cracker.x = 250;
-            cracker.y = 50;
+        var destination = null;
+
+        if (cracker.doorCooldown <= 0) {
+            if (cracker.cursor.isDown('up')) {
+                destination = door.up;
+            } else if (cracker.cursor.isDown('down')) {
+                destination = door.down;
+            }
+        }
+
+        if (destination) {
+            cracker.doorCooldown = 20;
+            cracker.x = destination.x;
+            cracker.y = destination.y;
         }
     };
 
     sprite.collisions = function () {
-        game.physics.arcade.collide(this, level.tilemap.floor);
+        // game.physics.arcade.collide(this, level.tilemap.floor);
         game.physics.arcade.overlap(level.doors, this, overlapDoor);
     };
 
     // update is now a member of an sprite object. Phaser will automagically
     // call it on every update cycle.
     sprite.update = function () {
+        this.doorCooldown--;
         this.visualUpdate();
         this.bringToTop();
         this.motion();

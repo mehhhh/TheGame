@@ -1,4 +1,5 @@
 var lvl1 = (function () {
+    var xPartition = 320;
 
     var preload = function () {
         // tilemap
@@ -26,9 +27,13 @@ var lvl1 = (function () {
         game.physics.startSystem(Phaser.Physics.ARCADE);
 
         // Sprites creation
-        this.tilemap = map(this);
+        this.tilemap = map(this, xPartition);
         this.cracker = cracker(this);
         this.cursor = cursor();
+
+        // this is a horrible patch: do not remove it, unless
+        // you wanna fix cracker's overlapDoor conflict
+        this.cracker.cursor = this.cursor;
 
         // creating doors
         this.doors = this.tilemap.parseDoors();
