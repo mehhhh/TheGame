@@ -24,14 +24,19 @@
    eJzt1sEJACAMBMGk/6Z9WIEgeJGZAo78NlV0yAYAsN3uqk4DwCwv2u1fAIAzCe1MuAGA/yyyXAAJ
   </data>
  </layer>
- <layer name="phone" width="50" height="40">
+ <layer name="phone" width="50" height="40" visible="0">
   <data encoding="base64" compression="zlib">
    eJzt1bENADAIwDD4/2ku6NAFJLAvyJYIgH45HQAAh/x+16cBYDevBwCAtwJrnAAF
   </data>
  </layer>
- <layer name="sysadmin" width="50" height="40" visible="0">
+ <layer name="sysadmin" width="50" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt1kENAAAMAjHm3/RksGStAn5cwmfTHgAAVGgAALjJRwPAb1oAoG8BZOAABQ==
+   eJztzgENAAAIA6Dbv7Qx7iYkIOGzaQcAAAAAAAAAjlg8gAAC
+  </data>
+ </layer>
+ <layer name="atm" width="50" height="40" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJzty7ENAAAIw7Dy/9N8wIBgs9coCQAAAAAAwL9atOkBgGsNMvQABA==
   </data>
  </layer>
 </map>

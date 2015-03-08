@@ -12,6 +12,7 @@ var lvl1 = (function () {
         // furniture
         game.load.spritesheet('door', 'assets/door.png', 48, 80);
         game.load.spritesheet('phone', 'assets/phone.png', 32, 32);
+        game.load.spritesheet('atm', 'assets/atm.png', 48, 80);
 
         // ppj
         game.load.spritesheet('cracker', 'assets/cracker.png', 48, 96);
@@ -42,8 +43,11 @@ var lvl1 = (function () {
         this.doors = this.tilemap.parseDoors();
         // creating phones
         this.phones = parsePhones(this, this.tilemap, this.tilemap.phone);
+        // creating sysadmins
         this.sysadmins = parseSysadmins(this, this.tilemap, this.tilemap.sysadmin,
                                         this.phones);
+        // creating atms
+        this.atms = parseAtms(this, this.tilemap, this.tilemap.atm);
 
         // bringing to top things (below this line)
         this.cracker.bringToTop();
