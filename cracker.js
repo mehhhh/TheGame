@@ -18,9 +18,11 @@ var cracker = function (level) {
         switch (true) {
         case level.cursor.isDown('right'):
             this.body.velocity.x += this.speed;
+            this.scale.set(1,1);
             break;
         case level.cursor.isDown('left'):
             this.body.velocity.x -= this.speed;
+            this.scale.set(-1,1);
             break;
         case level.cursor.isDown('down'):
             this.body.velocity.y += this.speed;
@@ -33,7 +35,7 @@ var cracker = function (level) {
     };
 
     sprite.collisions = function () {
-        game.physics.arcade.collide(this, this.level.tilemap.floor);
+        game.physics.arcade.collide(this, level.tilemap.floor);
     };
 
     // update is now a member of an sprite object. Phaser will automagically
